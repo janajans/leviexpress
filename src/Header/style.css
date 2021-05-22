@@ -1,0 +1,20 @@
+header {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1px;
+  height: 305px;
+  color: white;
+  background-color: #69bffc;
+  background-image: url(./img/banner.png);
+  background-size: contain;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+
+@media only screen and (min-width: 768px) {
+  header,
+  footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

@@ -1,0 +1,22 @@
+footer {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+@media only screen and (min-width: 768px) {
+  footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+footer {
+  margin-top: 4rem;
+  padding: 2rem 0 4rem 0;
+  color: white;
+  background-color: #69bffc;
+}
+
+.footer-title {
+  font-weight: bold;
+  font-size: 150%;
+}
