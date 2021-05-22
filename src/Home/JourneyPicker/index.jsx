@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './style.css';
 import mapImage from './img/map.svg';
 
 const JourneyPicker = () => {
+  const [fromCity, setFromCity] = useState('');
+  const [toCity, setToCity] = useState('');
+  const [date, setDate] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Odesílám formulář s cestou');
+    console.log(fromCity);
+    console.log(toCity);
+    console.log(date);
+  };
+
   return (
     <div className="journey-picker container">
       <h2 className="journey-picker__head">Kam chcete jet?</h2>
@@ -10,7 +22,10 @@ const JourneyPicker = () => {
         <form className="journey-picker__form">
           <label>
             <div className="journey-picker__label">Odkud:</div>
-            <select>
+            <select
+              value={fromCity}
+              onChange={(e) => setFromCity(e.target.value)}
+            >
               <option value="">Vyberte</option>
               <option value="Mesto1">Město 1</option>
               <option value="Mesto2">Město 2</option>
@@ -20,7 +35,7 @@ const JourneyPicker = () => {
           </label>
           <label>
             <div className="journey-picker__label">Kam:</div>
-            <select>
+            <select value={toCity} onChange={(e) => setToCity(e.target.value)}>
               <option value="">Vyberte</option>
               <option value="Mesto1">Město 1</option>
               <option value="Mesto2">Město 2</option>
@@ -30,7 +45,7 @@ const JourneyPicker = () => {
           </label>
           <label>
             <div className="journey-picker__label">Datum:</div>
-            <select>
+            <select value={date} onChange={(e) => setDate(e.target.value)}>
               <option value="">Vyberte</option>
               <option>20.05.2021</option>
               <option>21.05.2021</option>
@@ -39,7 +54,7 @@ const JourneyPicker = () => {
             </select>
           </label>
           <div className="journey-picker__controls">
-            <button className="btn" type="submit">
+            <button onClick={handleSubmit} className="btn" type="submit">
               Vyhledat spoj
             </button>
           </div>
