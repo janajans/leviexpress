@@ -47,9 +47,6 @@ const JourneyPicker = ({ onJourneyChange }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(fromCity);
-    console.log(toCity);
-    console.log(date);
     fetch(
       `https://leviexpress-backend.herokuapp.com/api/journey?fromCity=${fromCity}&toCity=${toCity}&date=${date}`,
     )

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import JourneyDetail from '../JourneyDetail';
+import SeatPicker from '../SeatPicker';
 import JourneyPicker from './JourneyPicker/index';
 
 //Vraťte se do komponenty Home, ze které se volá komponenta JourneyPicker. V komponentě Home vytvořte pomocí useState nový stav journey, výchozí hodnota bude null.
@@ -31,18 +32,58 @@ import JourneyPicker from './JourneyPicker/index';
 
 // Nyní už zbývá jen poslat z komponenty Home do komponenty JourneyDetail údaje o cestě. Vraťte se do komponenty Home. Ve stavu journey tam jsou uloženy údaje o cestě. Nyní už jen stačí tento stav předat do property journey komponenty JourneyDetail.
 
+// const Home = () => {
+//   const [journey, setJourney] = useState(null);
+//   const handleJourneyChange = (props) => {
+//     setJourney(props);
+//   };
+//   return (
+//     <>
+//       {console.log(journey)}
+//       <JourneyPicker onJourneyChange={handleJourneyChange} />
+//       {/* {journey ? <p>Nalezeno spojení s id {journey.journeyId}</p> : null} */}
+//       {/* {journey && <p>Nalezeno spojení s id {journey.journeyId}</p>} */}
+//       {journey && <JourneyDetail journey={journey} />}
+//     </>
+//   );
+// };
+// export default Home;
+
+// Přidejte komponentu SeatPicker do komponenty Home. Bude umístěna pod JourneyDetail. Finálně se bude zobrazovat stejně jako JourneyDetail jen v případě, kdy stav journey není prázdný. Pro vývoj komponenty ale bude rychlejší, když se prozatím bude zobrazovat stále.
+// const Home = () => {
+//   const [journey, setJourney] = useState(null);
+
+//   const handleJourneyChange = (props) => {
+//     setJourney(props);
+//   };
+//   return (
+//     <>
+//       {console.log(journey)}
+//       <JourneyPicker onJourneyChange={handleJourneyChange} />
+//       {journey && <JourneyDetail journey={journey} />}
+//       <SeatPicker />
+
+//     </>
+//   );
+// };
+// export default Home;
+
+// 9.14 Teď už je potřeba upravit komunentu Home tak, že komponentu SeatPicker bude zobrazovat jedině v případě, že je stav journey jiný, než null – stejně, jako se zobrazuje komponenta JourneyDetail. V komponentě SeatPicker také nastavte atributy seats (vloží se do něj journey.seats) a journeyId (do kterého přijde journey.journeyId). Ověřte v prohlížeči, že po vyhledání spoje se zobrazí podrobnosti cesty a také komponenta pro výběr sedadel – zatím s vašimi testovacími sedadly. V konzoli prohlížeče se vypíše pole s údaji o sedadlech a také identifikátor spoje.
 const Home = () => {
   const [journey, setJourney] = useState(null);
+
   const handleJourneyChange = (props) => {
     setJourney(props);
   };
   return (
     <>
-      {console.log(journey)}
       <JourneyPicker onJourneyChange={handleJourneyChange} />
-      {/* {journey ? <p>Nalezeno spojení s id {journey.journeyId}</p> : null} */}
-      {/* {journey && <p>Nalezeno spojení s id {journey.journeyId}</p>} */}
-      {journey && <JourneyDetail journey={journey} />}
+      {journey && (
+        <>
+          <JourneyDetail journey={journey} />
+          <SeatPicker seats={journey.seats} journeyId={journey.journeyId} />
+        </>
+      )}
     </>
   );
 };

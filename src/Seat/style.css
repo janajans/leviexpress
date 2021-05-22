@@ -1,0 +1,26 @@
+.seat {
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  margin-right: 0.5rem;
+}
+
+.seat--occupied {
+  filter: grayscale(1);
+  color: #888888;
+}
+
+.seat--selected {
+  color: red;
+}
+
+.seat__in {
+  width: 3rem;
+  height: 3rem;
+}
+
+.seat__number {
+  fill: currentColor;
+  font-family: 'Open Sans';
+  font-size: 36px;
+}
